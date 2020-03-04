@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coptur.movie.movie_app.dao.MovieDao">
+    <select id="findAll" resultType="com.coptur.movie.movie_app.bean.Movie">
+        select
+         *
+        from movie_info
+    </select>
+    
+    <!--<insert id="updateMovie" useGeneratedKeys="true"  keyProperty="id"  parameterType="com.coptur.movie.movie_app.bean.Movie">
+        replace into movie_info values (
+          #{id},#{imgSrc},#{name},#{score},#{heat},#{kind},
+          #{area},#{actor},#{actorImg},#{time}
+        )
+    </insert>-->
+
+    <insert id="updateMovie" parameterType="com.coptur.movie.movie_app.bean.Movie">
+        replace into movie_info values (
+          #{id},#{imgSrc},#{name},#{score},#{heat},#{kind},
+          #{area},#{actor},#{actorImg},#{time}
+        )
+    </insert>
+
+    <delete id="deleteMovie" parameterType="com.coptur.movie.movie_app.bean.Movie">
+           delete from movie_info where id = #{id};
+   </delete>
+
+    <!--<update id="updateMovie" parameterType="com.coptur.movie.movie_app.bean.Movie">
+        update movie_info
+        set
+          imgSrc =#{imgSrc},
+          name=#{name},
+          score=#{score},
+          heat=#{heat},
+          kind=#{kind},
+          area=#{area},
+          actor=#{actor},
+          time=#{time}
+        where id=#{id}
+    </update>-->
+</mapper>
